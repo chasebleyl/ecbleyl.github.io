@@ -1,0 +1,1125 @@
+<!--
+  Author: E. Chase Bleyl
+  Date: 11/19/2015
+
+  Go to getbootstrap.com to have access to all the different components and styling
+  that Bootstrap offers. Go to bootstrapcdn.com to get the latest CDN for bootstrap,
+  which is linked to the "stylesheets" in the headers.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Blue Bronco Stats</title>
+    <!-- Logo for site -->
+    <link rel="icon" type="image/png" href="images/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="images/favicon-16x16.png" sizes="16x16" />
+    <!-- This is a link to all the Bootstrap styling off of an online CDN, that
+    way you don't have to pull in all the CSS files into your project -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous">
+
+  </head>
+  <body>
+    <!-- Bootstrap uses a "Grid System", which helps with making mobile-responsive
+    websites. When the browser detects that a screen is too narrow to fit the whole
+    grid row, it will automatically adjust the row elements to stack on top of each
+    other, thus becoming an extremely useful feature.
+
+    Our website is comprosied of three rows in a grid. The first row will keep track
+    of passing stats and have four DIVs, the second will keep track of rushing stats
+    and have three DIVs, and the third will keep track of defense and have three divs.-->
+    <a href="profile.html">RETURN TO ABOUT ME PAGE</a>
+    <!-- Passing Statistics -->
+    <h2>Passing</h2>
+    <div class="row">
+      <div class="col-xs-3">
+        <!-- Drop down to select players -->
+        <select id="DDLPassing" class="form-control">
+          <option value="Joey">Joey Mills</option>
+          <option value="Ryan">Ryan Thorsen </option>
+          <option value="Dallin">Dallin Wasden</option>
+          <option value="Shad">Shad Mills</option>
+          <option value="Scott">Scott Dayley</option>
+          <option value="Daniel">Daniel Dahle</option>
+          <option value="Tanner">Tanner Pierce</option>
+          <option value="Jacob">Jacob O'Brien</option>
+          <option value="Zach">Zach Cobb</option>
+          <option value="Michael">Michael Shreeve</option>
+          <option value="Chase">Chase Bleyl</option>
+        </select>
+      </div>
+      <div class="col-xs-3">
+        <!-- Button for completion -->
+        <input class="btn btn-default" type="button" value="Completion" onclick="javascript:passComplete();">
+      </div>
+      <div class="col-xs-3">
+        <!-- Button for incompletion -->
+        <input class="btn btn-default" type="button" value="Incomplete" onclick="javascript:passIncomplete();">
+      </div>
+      <div class="col-xs-3">
+        <!-- Button for Touchdown -->
+        <input class="btn btn-default" type="button" value="Touchdown" onclick="javascript:passTouchdown();">
+      </div>
+    </div>
+    <!-- Rushing Statistics -->
+    <h2>Rushing</h2>
+    <div class="row">
+      <div class="col-xs-4">
+        <!-- Drop down to select players -->
+        <select id="DDLRushing" class="form-control">
+          <option value="Joey">Joey Mills</option>
+          <option value="Ryan">Ryan Thorsen </option>
+          <option value="Dallin">Dallin Wasden</option>
+          <option value="Shad">Shad Mills</option>
+          <option value="Scott">Scott Dayley</option>
+          <option value="Daniel">Daniel Dahle</option>
+          <option value="Tanner">Tanner Pierce</option>
+          <option value="Jacob">Jacob O'Brien</option>
+          <option value="Zach">Zach Cobb</option>
+          <option value="Michael">Michael Shreeve</option>
+          <option value="Chase">Chase Bleyl</option>
+        </select>
+      </div>
+      <div class="col-xs-4">
+        <!-- Button for rush attempt -->
+        <input class="btn btn-default" type="button" value="Rush Attempt" onclick="javascript:rushAttempt();">
+      </div>
+      <div class="col-xs-4">
+        <!-- Button for rush TD -->
+        <input class="btn btn-default" type="button" value="Touchdown" onclick="javascript:rushTouchdown();">
+      </div>
+    </div>
+    <!-- Defense Statistics -->
+    <h2>Defense</h2>
+    <div class="row">
+      <div class="col-xs-4">
+        <!-- Drop down to select players -->
+        <select id="DDLDefense" class="form-control">
+          <option value="Joey">Joey Mills</option>
+          <option value="Ryan">Ryan Thorsen </option>
+          <option value="Dallin">Dallin Wasden</option>
+          <option value="Shad">Shad Mills</option>
+          <option value="Scott">Scott Dayley</option>
+          <option value="Daniel">Daniel Dahle</option>
+          <option value="Tanner">Tanner Pierce</option>
+          <option value="Jacob">Jacob O'Brien</option>
+          <option value="Zach">Zach Cobb</option>
+          <option value="Michael">Michael Shreeve</option>
+          <option value="Chase">Chase Bleyl</option>
+        </select>
+      </div>
+      <div class="col-xs-4">
+        <!-- Button for tackles -->
+        <input class="btn btn-default" type="button" value="Tackle" onclick="javascript:defenseTackle();">
+      </div>
+      <div class="col-xs-4">
+        <!-- Button for interception -->
+        <input class="btn btn-default" type="button" value="Interception" onclick="javascript:defenseInterception();">
+      </div>
+    </div>
+    <!-- Here we have the tables which will have all the stats for the team -->
+    <!-- Passing statistics -->
+    <h3>Passing Stats</h3>
+    <table id="passingTable" class="table table-striped">
+      <tr class="active">
+        <th>Player</th>
+        <th>Completions</th>
+        <th>Attempts</th>
+        <th>Touchdowns</th>
+      </tr>
+      <tr>
+        <td>Michael Shreeve</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+      </tr>
+      <tr class="warning">
+        <td>Totals</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+      </tr>
+    </table>
+    <!-- Receiving statistics -->
+    <h3>Receiving Stats</h3>
+    <table id="receivingTable" class="table table-striped">
+      <tr class="active">
+        <th>Player</th>
+        <th>Receptions</th>
+        <th>Targets</th>
+        <th>Touchdowns</th>
+      </tr>
+      <tr>
+        <td>Joey Mills</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>Ryan Thorsen</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>Dallin Wasden</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>Shad Mills</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>Scott Dayley</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>Daniel Dahle</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>Tanner Pierce</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>Jacob O'Brien</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>Zach Cobb</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>Michael Shreeve</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>Chase Bleyl</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+      </tr>
+      <tr class="warning">
+        <td>Totals</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+      </tr>
+    </table>
+    <!-- Rushing statistics -->
+    <h3>Rushing Stats</h3>
+    <table id="rushingTable" class="table table-striped">
+      <tr class="active">
+        <th>Player</th>
+        <th>Attempts</th>
+        <th>Touchdowns</th>
+      </tr>
+      <tr>
+        <td>Joey Mills</td>
+        <td>0</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>Ryan Thorsen</td>
+        <td>0</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>Dallin Wasden</td>
+        <td>0</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>Shad Mills</td>
+        <td>0</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>Scott Dayley</td>
+        <td>0</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>Daniel Dahle</td>
+        <td>0</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>Tanner Pierce</td>
+        <td>0</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>Jacob O'Brien</td>
+        <td>0</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>Zach Cobb</td>
+        <td>0</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>Michael Shreeve</td>
+        <td>0</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>Chase Bleyl</td>
+        <td>0</td>
+        <td>0</td>
+      </tr>
+      <tr class="warning">
+        <td>Totals</td>
+        <td>0</td>
+        <td>0</td>
+      </tr>
+    </table>
+    <!-- Defense statistics -->
+    <h3>Defense Stats</h3>
+    <table id="defenseTable" class="table table-striped">
+      <tr class="active">
+        <th>Player</th>
+        <th>Tackles</th>
+        <th>Interceptions</th>
+      </tr>
+      <tr>
+        <td>Joey Mills</td>
+        <td>0</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>Ryan Thorsen</td>
+        <td>0</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>Dallin Wasden</td>
+        <td>0</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>Shad Mills</td>
+        <td>0</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>Scott Dayley</td>
+        <td>0</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>Daniel Dahle</td>
+        <td>0</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>Tanner Pierce</td>
+        <td>0</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>Jacob O'Brien</td>
+        <td>0</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>Zach Cobb</td>
+        <td>0</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>Michael Shreeve</td>
+        <td>0</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>Chase Bleyl</td>
+        <td>0</td>
+        <td>0</td>
+      </tr>
+      <tr class="warning">
+        <td>Totals</td>
+        <td>0</td>
+        <td>0</td>
+      </tr>
+    </table>
+    <!-- We are going to write the functions for all the buttons down here in the
+    script section. This is where the Javascript goes, which tells your website how
+    to respond to user's actions.-->
+    <!--
+      I made functions for each one of the buttons. When those buttons are clicked
+      it will automatically run the functions labeled below. Now, the main part of
+      the program after the asthetics is going to be how to store and retrieve the
+      data from the web page. You can have some freedom here, whether to use simple
+      counters (and make a ton of counters) for every person and every statistic,
+      or to use an array and load up values inside of those arrays. You are going to
+      have to do some research, figure out what might be easiest.
+
+      Note that you are going to have to call on the selected item from the drop
+      down list. I gave every drop down list with player names an ID, so if you
+      want to pull info from the rushing list, you would have to reference DDLRushing.
+      You can even redo the drop down list so there is only one and just have all
+      the buttons below that one drop down list. This is however you want to make
+      it amigo!
+
+      Let me know if you have any questions.
+    -->
+    <script>
+      // Make arrays for each individual
+      /* Details of Person Array
+        Person[0]=Name
+        Person[1]=Receiving Receptions
+        Person[2]=Receiving Targets
+        Person[3]=Receiving TDs
+        Person[4]=Rushing Attempts
+        Person[5]=Rushing TDs
+        Person[6]=Defensive Tackles
+        Person[7]=Defensive Interceptions
+        Person[8]=Passing Completions
+        Person[9]=Passing Attempts
+        Person[10]=Passing TDs
+      */
+      var Michael = new Array(
+        "Michael Shreeve"
+        , 0
+        , 0
+        , 0
+        , 0
+        , 0
+        , 0
+        , 0
+        , 0
+        , 0
+        , 0
+      );
+      var Joey = new Array(
+        "Joey Mills"
+        , 0
+        , 0
+        , 0
+        , 0
+        , 0
+        , 0
+        , 0
+        , 0
+        , 0
+        , 0
+      );
+      var Ryan = new Array(
+        "Ryan Thorsen"
+        , 0
+        , 0
+        , 0
+        , 0
+        , 0
+        , 0
+        , 0
+        , 0
+        , 0
+        , 0
+      );
+      var Dallin = new Array(
+        "Dallin Wasden"
+        , 0
+        , 0
+        , 0
+        , 0
+        , 0
+        , 0
+        , 0
+        , 0
+        , 0
+        , 0
+      );
+      var Shad = new Array(
+        "Shad Mills"
+        , 0
+        , 0
+        , 0
+        , 0
+        , 0
+        , 0
+        , 0
+        , 0
+        , 0
+        , 0
+      );
+      var Scott = new Array(
+        "Scott Dayley"
+        , 0
+        , 0
+        , 0
+        , 0
+        , 0
+        , 0
+        , 0
+        , 0
+        , 0
+        , 0
+      );
+      var Daniel = new Array(
+        "Daniel Dahle"
+        , 0
+        , 0
+        , 0
+        , 0
+        , 0
+        , 0
+        , 0
+        , 0
+        , 0
+        , 0
+      );
+      var Tanner = new Array(
+        "Tanner Pierce"
+        , 0
+        , 0
+        , 0
+        , 0
+        , 0
+        , 0
+        , 0
+        , 0
+        , 0
+        , 0
+      );
+      var Jacob = new Array(
+        "Jacob O'Brien"
+        , 0
+        , 0
+        , 0
+        , 0
+        , 0
+        , 0
+        , 0
+        , 0
+        , 0
+        , 0
+      );
+      var Zach = new Array(
+        "Zach Cobb"
+        , 0
+        , 0
+        , 0
+        , 0
+        , 0
+        , 0
+        , 0
+        , 0
+        , 0
+        , 0
+      );
+      var Chase = new Array(
+        "Chase Bleyl"
+        , 0
+        , 0
+        , 0
+        , 0
+        , 0
+        , 0
+        , 0
+        , 0
+        , 0
+        , 0
+      );
+      // Counters for the totals
+      var iPassCompletion = 0;
+      var iPassAttempt = 0;
+      var iPassTouchdown = 0;
+      var iReceivingReception = 0;
+      var iReceivingTarget = 0;
+      var iReceivingTouchdown = 0;
+      var iRushingAttempt = 0;
+      var iRushingTouchdown = 0;
+      var iDefenseTackles = 0;
+      var iDefenseInterception = 0;
+
+      function passComplete() {
+        /*
+          If a pass is completed, figure out who it was completed to, then update
+          the receiver's stats, along with the QB's
+        */
+        var selectedPlayer = document.getElementById("DDLPassing");
+        if (selectedPlayer[selectedPlayer.selectedIndex].value == "Joey") {
+          Joey[1] = Joey[1] + 1;
+          Joey[2] = Joey[2] + 1;
+          Michael[8] = Michael[8] + 1;
+          Michael[9] = Michael[9] + 1;
+        }
+        else if (selectedPlayer[selectedPlayer.selectedIndex].value == "Ryan") {
+          Ryan[1] = Ryan[1] + 1;
+          Ryan[2] = Ryan[2] + 1;
+          Michael[8] = Michael[8] + 1;
+          Michael[9] = Michael[9] + 1;
+        }
+        else if (selectedPlayer[selectedPlayer.selectedIndex].value == "Dallin") {
+          Dallin[1] = Dallin[1] + 1;
+          Dallin[2] = Dallin[2] + 1;
+          Michael[8] = Michael[8] + 1;
+          Michael[9] = Michael[9] + 1;
+        }
+        else if (selectedPlayer[selectedPlayer.selectedIndex].value == "Shad") {
+          Shad[1] = Shad[1] + 1;
+          Shad[2] = Shad[2] + 1;
+          Michael[8] = Michael[8] + 1;
+          Michael[9] = Michael[9] + 1;
+        }
+        else if (selectedPlayer[selectedPlayer.selectedIndex].value == "Scott") {
+          Scott[1] = Scott[1] + 1;
+          Scott[2] = Scott[2] + 1;
+          Michael[8] = Michael[8] + 1;
+          Michael[9] = Michael[9] + 1;
+        }
+        else if (selectedPlayer[selectedPlayer.selectedIndex].value == "Daniel") {
+          Daniel[1] = Daniel[1] + 1;
+          Daniel[2] = Daniel[2] + 1;
+          Michael[8] = Michael[8] + 1;
+          Michael[9] = Michael[9] + 1;
+        }
+        else if (selectedPlayer[selectedPlayer.selectedIndex].value == "Tanner") {
+          Tanner[1] = Tanner[1] + 1;
+          Tanner[2] = Tanner[2] + 1;
+          Michael[8] = Michael[8] + 1;
+          Michael[9] = Michael[9] + 1;
+        }
+        else if (selectedPlayer[selectedPlayer.selectedIndex].value == "Jacob") {
+          Jacob[1] = Jacob[1] + 1;
+          Jacob[2] = Jacob[2] + 1;
+          Michael[8] = Michael[8] + 1;
+          Michael[9] = Michael[9] + 1;
+        }
+        else if (selectedPlayer[selectedPlayer.selectedIndex].value == "Zach") {
+          Zach[1] = Zach[1] + 1;
+          Zach[2] = Zach[2] + 1;
+          Michael[8] = Michael[8] + 1;
+          Michael[9] = Michael[9] + 1;
+        }
+        else if (selectedPlayer[selectedPlayer.selectedIndex].value == "Michael") {
+          Michael[1] = Michael[1] + 1;
+          Michael[2] = Michael[2] + 1;
+        }
+        else if (selectedPlayer[selectedPlayer.selectedIndex].value == "Chase") {
+          Chase[1] = Chase[1] + 1;
+          Chase[2] = Chase[2] + 1;
+          Michael[8] = Michael[8] + 1;
+          Michael[9] = Michael[9] + 1;
+        }
+        iPassCompletion = iPassCompletion + 1;
+        iReceivingReception = iReceivingReception + 1;
+        iPassAttempt = iPassAttempt + 1;
+        iReceivingTarget = iReceivingTarget + 1;
+        updateStats();
+      }
+
+      function passIncomplete() {
+        /*
+          If a pass is incomplete, you update the target for the receiver and
+          also the pass atempt for the quarterback
+        */
+
+        var selectedPlayer = document.getElementById("DDLPassing");
+        if (selectedPlayer[selectedPlayer.selectedIndex].value == "Joey") {
+          Joey[2] = Joey[2] + 1;
+          Michael[9] = Michael[9] + 1;
+        }
+        else if (selectedPlayer[selectedPlayer.selectedIndex].value == "Ryan") {
+          Ryan[2] = Ryan[2] + 1;
+          Michael[9] = Michael[9] + 1;
+        }
+        else if (selectedPlayer[selectedPlayer.selectedIndex].value == "Dallin") {
+          Dallin[2] = Dallin[2] + 1;
+          Michael[9] = Michael[9] + 1;
+        }
+        else if (selectedPlayer[selectedPlayer.selectedIndex].value == "Shad") {
+          Shad[2] = Shad[2] + 1;
+          Michael[9] = Michael[9] + 1;
+        }
+        else if (selectedPlayer[selectedPlayer.selectedIndex].value == "Scott") {
+          Scott[2] = Scott[2] + 1;
+          Michael[9] = Michael[9] + 1;
+        }
+        else if (selectedPlayer[selectedPlayer.selectedIndex].value == "Daniel") {
+          Daniel[2] = Daniel[2] + 1;
+          Michael[9] = Michael[9] + 1;
+        }
+        else if (selectedPlayer[selectedPlayer.selectedIndex].value == "Tanner") {
+          Tanner[2] = Tanner[2] + 1;
+          Michael[9] = Michael[9] + 1;
+        }
+        else if (selectedPlayer[selectedPlayer.selectedIndex].value == "Jacob") {
+          Jacob[2] = Jacob[2] + 1;
+          Michael[9] = Michael[9] + 1;
+        }
+        else if (selectedPlayer[selectedPlayer.selectedIndex].value == "Zach") {
+          Zach[2] = Zach[2] + 1;
+          Michael[9] = Michael[9] + 1;
+        }
+        else if (selectedPlayer[selectedPlayer.selectedIndex].value == "Michael") {
+          Michael[2] = Michael[2] + 1;
+        }
+        else if (selectedPlayer[selectedPlayer.selectedIndex].value == "Chase") {
+          Chase[2] = Chase[2] + 1;
+          Michael[9] = Michael[9] + 1;
+        }
+        iReceivingTarget = iReceivingTarget + 1;
+        iPassAttempt = iPassAttempt + 1;
+        updateStats();
+      }
+
+      function passTouchdown() {
+        /*
+          If a pass is completed for a touchdown, figure out who the receiver was,
+          and then update the receptions, targets, and tds for that receiver and
+          for the QB
+        */
+        var selectedPlayer = document.getElementById("DDLPassing");
+        if (selectedPlayer[selectedPlayer.selectedIndex].value == "Joey") {
+          Joey[1] = Joey[1] + 1;
+          Joey[2] = Joey[2] + 1;
+          Joey[3] = Joey[3] + 1;
+          Michael[8] = Michael[8] + 1;
+          Michael[9] = Michael[9] + 1;
+          Michael[10] = Michael[10] + 1;
+        }
+        else if (selectedPlayer[selectedPlayer.selectedIndex].value == "Ryan") {
+          Ryan[1] = Ryan[1] + 1;
+          Ryan[2] = Ryan[2] + 1;
+          Ryan[3] = Ryan[3] + 1;
+          Michael[8] = Michael[8] + 1;
+          Michael[9] = Michael[9] + 1;
+          Michael[10] = Michael[10] + 1;
+        }
+        else if (selectedPlayer[selectedPlayer.selectedIndex].value == "Dallin") {
+          Dallin[1] = Dallin[1] + 1;
+          Dallin[2] = Dallin[2] + 1;
+          Dallin[3] + Dallin[3] + 1;
+          Michael[8] = Michael[8] + 1;
+          Michael[9] = Michael[9] + 1;
+          Michael[10] = Michael[10] + 1;
+        }
+        else if (selectedPlayer[selectedPlayer.selectedIndex].value == "Shad") {
+          Shad[1] = Shad[1] + 1;
+          Shad[2] = Shad[2] + 1;
+          Shad[3] = Shad[3] + 1;
+          Michael[8] = Michael[8] + 1;
+          Michael[9] = Michael[9] + 1;
+          Michael[10] = Michael[10] + 1;
+        }
+        else if (selectedPlayer[selectedPlayer.selectedIndex].value == "Scott") {
+          Scott[1] = Scott[1] + 1;
+          Scott[2] = Scott[2] + 1;
+          Scott[3] = Scott[3] + 1;
+          Michael[8] = Michael[8] + 1;
+          Michael[9] = Michael[9] + 1;
+          Michael[10] = Michael[10] + 1;
+        }
+        else if (selectedPlayer[selectedPlayer.selectedIndex].value == "Daniel") {
+          Daniel[1] = Daniel[1] + 1;
+          Daniel[2] = Daniel[2] + 1;
+          Daniel[3] = Daniel[3] + 1;
+          Michael[8] = Michael[8] + 1;
+          Michael[9] = Michael[9] + 1;
+          Michael[10] = Michael[10] + 1;
+        }
+        else if (selectedPlayer[selectedPlayer.selectedIndex].value == "Tanner") {
+          Tanner[1] = Tanner[1] + 1;
+          Tanner[2] = Tanner[2] + 1;
+          Tanner[3] = Tanner[3] + 1;
+          Michael[8] = Michael[8] + 1;
+          Michael[9] = Michael[9] + 1;
+          Michael[10] = Michael[10] + 1;
+        }
+        else if (selectedPlayer[selectedPlayer.selectedIndex].value == "Jacob") {
+          Jacob[1] = Jacob[1] + 1;
+          Jacob[2] = Jacob[2] + 1;
+          Jacob[3] = Jacob[3] + 1;
+          Michael[8] = Michael[8] + 1;
+          Michael[9] = Michael[9] + 1;
+          Michael[10] = Michael[10] + 1;
+        }
+        else if (selectedPlayer[selectedPlayer.selectedIndex].value == "Zach") {
+          Zach[1] = Zach[1] + 1;
+          Zach[2] = Zach[2] + 1;
+          Zach[3] = Zach[3] + 1;
+          Michael[8] = Michael[8] + 1;
+          Michael[9] = Michael[9] + 1;
+          Michael[10] = Michael[10] + 1;
+        }
+        else if (selectedPlayer[selectedPlayer.selectedIndex].value == "Michael") {
+          Michael[1] = Michael[1] + 1;
+          Michael[2] = Michael[2] + 1;
+          Michael[3] = Michael[3] + 1;
+        }
+        else if (selectedPlayer[selectedPlayer.selectedIndex].value == "Chase") {
+          Chase[1] = Chase[1] + 1;
+          Chase[2] = Chase[2] + 1;
+          Chase[3] = Chase[3] + 1;
+          Michael[8] = Michael[8] + 1;
+          Michael[9] = Michael[9] + 1;
+          Michael[10] = Michael[10] + 1;
+        }
+        iReceivingTarget = iReceivingTarget + 1;
+        iPassAttempt = iPassAttempt + 1;
+        iReceivingReception = iReceivingReception + 1;
+        iPassCompletion = iPassCompletion + 1;
+        iReceivingTouchdown = iReceivingTouchdown + 1;
+        iPassTouchdown = iPassTouchdown + 1;
+        updateStats();
+      }
+
+      function rushAttempt() {
+        /*
+          If a rush is performed but a touchdown is not scored, then the rush
+          attempt counter is updated
+        */
+        var selectedPlayer = document.getElementById("DDLRushing");
+        if (selectedPlayer[selectedPlayer.selectedIndex].value == "Joey") {
+          Joey[4] = Joey[4] + 1;
+        }
+        else if (selectedPlayer[selectedPlayer.selectedIndex].value == "Ryan") {
+          Ryan[4] = Ryan[4] + 1;
+        }
+        else if (selectedPlayer[selectedPlayer.selectedIndex].value == "Dallin") {
+          Dallin[4] = Dallin[4] + 1;
+        }
+        else if (selectedPlayer[selectedPlayer.selectedIndex].value == "Shad") {
+          Shad[4] = Shad[4] + 1;
+        }
+        else if (selectedPlayer[selectedPlayer.selectedIndex].value == "Scott") {
+          Scott[4] = Scott[4] + 1;
+        }
+        else if (selectedPlayer[selectedPlayer.selectedIndex].value == "Daniel") {
+          Daniel[4] = Daniel[4] + 1;
+        }
+        else if (selectedPlayer[selectedPlayer.selectedIndex].value == "Tanner") {
+          Tanner[4] = Tanner[4] + 1;
+        }
+        else if (selectedPlayer[selectedPlayer.selectedIndex].value == "Jacob") {
+          Jacob[4] = Jacob[4] + 1;
+        }
+        else if (selectedPlayer[selectedPlayer.selectedIndex].value == "Zach") {
+          Zach[4] = Zach[4] + 1;
+        }
+        else if (selectedPlayer[selectedPlayer.selectedIndex].value == "Michael") {
+          Michael[4] = Michael[4] + 1;
+        }
+        else if (selectedPlayer[selectedPlayer.selectedIndex].value == "Chase") {
+          Chase[4] = Chase[4] + 1;
+        }
+        iRushingAttempt = iRushingAttempt + 1;
+        updateStats();
+      }
+
+      function rushTouchdown() {
+        /*
+          The rushing touchdown counter is updated for the person selected in the
+          drop down list, along with the rush attempt counter
+        */
+        var selectedPlayer = document.getElementById("DDLRushing");
+        if (selectedPlayer[selectedPlayer.selectedIndex].value == "Joey") {
+          Joey[4] = Joey[4] + 1;
+          Joey[5] = Joey[5] + 1;
+        }
+        else if (selectedPlayer[selectedPlayer.selectedIndex].value == "Ryan") {
+          Ryan[4] = Ryan[4] + 1;
+          Ryan[5] = Ryan[5] + 1;
+        }
+        else if (selectedPlayer[selectedPlayer.selectedIndex].value == "Dallin") {
+          Dallin[4] = Dallin[4] + 1;
+          Dallin[5] = Dallin[5] + 1;
+        }
+        else if (selectedPlayer[selectedPlayer.selectedIndex].value == "Shad") {
+          Shad[4] = Shad[4] + 1;
+          Shad[5] = Shad[5] + 1;
+        }
+        else if (selectedPlayer[selectedPlayer.selectedIndex].value == "Scott") {
+          Scott[4] = Scott[4] + 1;
+          Scott[5] = Scott[5] + 1;
+        }
+        else if (selectedPlayer[selectedPlayer.selectedIndex].value == "Daniel") {
+          Daniel[4] = Daniel[4] + 1;
+          Daniel[5] = Daniel[5] + 1;
+        }
+        else if (selectedPlayer[selectedPlayer.selectedIndex].value == "Tanner") {
+          Tanner[4] = Tanner[4] + 1;
+          Tanner[5] = Tanner[5] + 1;
+        }
+        else if (selectedPlayer[selectedPlayer.selectedIndex].value == "Jacob") {
+          Jacob[4] = Jacob[4] + 1;
+          Jacob[5] = Jacob[5] + 1;
+        }
+        else if (selectedPlayer[selectedPlayer.selectedIndex].value == "Zach") {
+          Zach[4] = Zach[4] + 1;
+          Zach[5] = Zach[5] + 1;
+        }
+        else if (selectedPlayer[selectedPlayer.selectedIndex].value == "Michael") {
+          Michael[4] = Michael[4] + 1;
+          Michael[5] = Michael[5] + 1;
+        }
+        else if (selectedPlayer[selectedPlayer.selectedIndex].value == "Chase") {
+          Chase[4] = Chase[4] + 1;
+          Chase[5] = Chase[5] + 1;
+        }
+        iRushingAttempt = iRushingAttempt + 1;
+        iRushingTouchdown = iRushingTouchdown + 1;
+        updateStats();
+      }
+
+      function defenseTackle() {
+        /*
+          The tackle counter is updated for the person selected by the drop
+          down list for each tackle they make
+        */
+        var selectedPlayer = document.getElementById("DDLDefense");
+        if (selectedPlayer[selectedPlayer.selectedIndex].value == "Joey") {
+          Joey[6] = Joey[6] + 1;
+        }
+        else if (selectedPlayer[selectedPlayer.selectedIndex].value == "Ryan") {
+          Ryan[6] = Ryan[6] + 1;
+        }
+        else if (selectedPlayer[selectedPlayer.selectedIndex].value == "Dallin") {
+          Dallin[6] = Dallin[6] + 1;
+        }
+        else if (selectedPlayer[selectedPlayer.selectedIndex].value == "Shad") {
+          Shad[6] = Shad[6] + 1;
+        }
+        else if (selectedPlayer[selectedPlayer.selectedIndex].value == "Scott") {
+          Scott[6] = Scott[6] + 1;
+        }
+        else if (selectedPlayer[selectedPlayer.selectedIndex].value == "Daniel") {
+          Daniel[6] = Daniel[6] + 1;
+        }
+        else if (selectedPlayer[selectedPlayer.selectedIndex].value == "Tanner") {
+          Tanner[6] = Tanner[6] + 1;
+        }
+        else if (selectedPlayer[selectedPlayer.selectedIndex].value == "Jacob") {
+          Jacob[6] = Jacob[6] + 1;
+        }
+        else if (selectedPlayer[selectedPlayer.selectedIndex].value == "Zach") {
+          Zach[6] = Zach[6] + 1;
+        }
+        else if (selectedPlayer[selectedPlayer.selectedIndex].value == "Michael") {
+          Michael[6] = Michael[6] + 1;
+        }
+        else if (selectedPlayer[selectedPlayer.selectedIndex].value == "Chase") {
+          Chase[6] = Chase[6] + 1;
+        }
+        iDefenseTackles = iDefenseTackles + 1;
+        updateStats();
+      }
+
+      function defenseInterception() {
+        /*
+          For every interception the defense receives, the interception counter
+          is updated for the player selected
+        */
+
+        var selectedPlayer = document.getElementById("DDLDefense");
+        if (selectedPlayer[selectedPlayer.selectedIndex].value == "Joey") {
+          Joey[7] = Joey[7] + 1;
+        }
+        else if (selectedPlayer[selectedPlayer.selectedIndex].value == "Ryan") {
+          Ryan[7] = Ryan[7] + 1;
+        }
+        else if (selectedPlayer[selectedPlayer.selectedIndex].value == "Dallin") {
+          Dallin[7] = Dallin[7] + 1;
+        }
+        else if (selectedPlayer[selectedPlayer.selectedIndex].value == "Shad") {
+          Shad[7] = Shad[7] + 1;
+        }
+        else if (selectedPlayer[selectedPlayer.selectedIndex].value == "Scott") {
+          Scott[7] = Scott[7] + 1;
+        }
+        else if (selectedPlayer[selectedPlayer.selectedIndex].value == "Daniel") {
+          Daniel[7] = Daniel[7] + 1;
+        }
+        else if (selectedPlayer[selectedPlayer.selectedIndex].value == "Tanner") {
+          Tanner[7] = Tanner[7] + 1;
+        }
+        else if (selectedPlayer[selectedPlayer.selectedIndex].value == "Jacob") {
+          Jacob[7] = Jacob[7] + 1;
+        }
+        else if (selectedPlayer[selectedPlayer.selectedIndex].value == "Zach") {
+          Zach[7] = Zach[7] + 1;
+        }
+        else if (selectedPlayer[selectedPlayer.selectedIndex].value == "Michael") {
+          Michael[7] = Michael[7] + 1;
+        }
+        else if (selectedPlayer[selectedPlayer.selectedIndex].value == "Chase") {
+          Chase[7] = Chase[7] + 1;
+        }
+        iDefenseInterception = iDefenseInterception + 1;
+        updateStats();
+      }
+
+      function updateStats() {
+        /*
+          In this function, the stats table underneath the data input section is
+          updated with live stats based on the current array inputs.
+        */
+        // Update Passing Stats Table
+        var table = document.getElementById("passingTable").rows;
+        var row = table[1].cells;
+        row[1].innerHTML = Michael[8];
+        row[2].innerHTML = Michael[9];
+        row[3].innerHTML = Michael[10];
+        var row = table[2].cells;
+        row[1].innerHTML = iPassCompletion;
+        row[2].innerHTML = iPassAttempt;
+        row[3].innerHTML = iPassTouchdown;
+        // Update Receiving Stats Table
+        var table = document.getElementById("receivingTable").rows;
+        var row = table[1].cells;
+        row[1].innerHTML = Joey[1];
+        row[2].innerHTML = Joey[2];
+        row[3].innerHTML = Joey[3];
+        var row = table[2].cells;
+        row[1].innerHTML = Ryan[1];
+        row[2].innerHTML = Ryan[2];
+        row[3].innerHTML = Ryan[3];
+        var row = table[3].cells;
+        row[1].innerHTML = Dallin[1];
+        row[2].innerHTML = Dallin[2];
+        row[3].innerHTML = Dallin[3];
+        var row = table[4].cells;
+        row[1].innerHTML = Shad[1];
+        row[2].innerHTML = Shad[2];
+        row[3].innerHTML = Shad[3];
+        var row = table[5].cells;
+        row[1].innerHTML = Scott[1];
+        row[2].innerHTML = Scott[2];
+        row[3].innerHTML = Scott[3];
+        var row = table[6].cells;
+        row[1].innerHTML = Daniel[1];
+        row[2].innerHTML = Daniel[2];
+        row[3].innerHTML = Daniel[3];
+        var row = table[7].cells;
+        row[1].innerHTML = Tanner[1];
+        row[2].innerHTML = Tanner[2];
+        row[3].innerHTML = Tanner[3];
+        var row = table[8].cells;
+        row[1].innerHTML = Jacob[1];
+        row[2].innerHTML = Jacob[2];
+        row[3].innerHTML = Jacob[3];
+        var row = table[9].cells;
+        row[1].innerHTML = Zach[1];
+        row[2].innerHTML = Zach[2];
+        row[3].innerHTML = Zach[3];
+        var row = table[10].cells;
+        row[1].innerHTML = Michael[1];
+        row[2].innerHTML = Michael[2];
+        row[3].innerHTML = Michael[3];
+        var row = table[11].cells;
+        row[1].innerHTML = Chase[1];
+        row[2].innerHTML = Chase[2];
+        row[3].innerHTML = Chase[3];
+        var row = table[12].cells;
+        row[1].innerHTML = iReceivingReception;
+        row[2].innerHTML = iReceivingTarget;
+        row[3].innerHTML = iReceivingTouchdown;
+        // Update Rushing Stats Table
+        var table = document.getElementById("rushingTable").rows;
+        var row = table[1].cells;
+        row[1].innerHTML = Joey[4];
+        row[2].innerHTML = Joey[5];
+        var row = table[2].cells;
+        row[1].innerHTML = Ryan[4];
+        row[2].innerHTML = Ryan[5];
+        var row = table[3].cells;
+        row[1].innerHTML = Dallin[4];
+        row[2].innerHTML = Dallin[5];
+        var row = table[4].cells;
+        row[1].innerHTML = Shad[4];
+        row[2].innerHTML = Shad[5];
+        var row = table[5].cells;
+        row[1].innerHTML = Scott[4];
+        row[2].innerHTML = Scott[5];
+        var row = table[6].cells;
+        row[1].innerHTML = Daniel[4];
+        row[2].innerHTML = Daniel[5];
+        var row = table[7].cells;
+        row[1].innerHTML = Tanner[4];
+        row[2].innerHTML = Tanner[5];
+        var row = table[8].cells;
+        row[1].innerHTML = Jacob[4];
+        row[2].innerHTML = Jacob[5];
+        var row = table[9].cells;
+        row[1].innerHTML = Zach[4];
+        row[2].innerHTML = Zach[5];
+        var row = table[10].cells;
+        row[1].innerHTML = Michael[4];
+        row[2].innerHTML = Michael[5];
+        var row = table[11].cells;
+        row[1].innerHTML = Chase[4];
+        row[2].innerHTML = Chase[5];
+        var row = table[12].cells;
+        row[1].innerHTML = iRushingAttempt;
+        row[2].innerHTML = iRushingTouchdown;
+        // Update Defense Stats Table
+        var table = document.getElementById("defenseTable").rows;
+        var row = table[1].cells;
+        row[1].innerHTML = Joey[6];
+        row[2].innerHTML = Joey[7];
+        var row = table[2].cells;
+        row[1].innerHTML = Ryan[6];
+        row[2].innerHTML = Ryan[7];
+        var row = table[3].cells;
+        row[1].innerHTML = Dallin[6];
+        row[2].innerHTML = Dallin[7];
+        var row = table[4].cells;
+        row[1].innerHTML = Shad[6];
+        row[2].innerHTML = Shad[7];
+        var row = table[5].cells;
+        row[1].innerHTML = Scott[6];
+        row[2].innerHTML = Scott[7];
+        var row = table[6].cells;
+        row[1].innerHTML = Daniel[6];
+        row[2].innerHTML = Daniel[7];
+        var row = table[7].cells;
+        row[1].innerHTML = Tanner[6];
+        row[2].innerHTML = Tanner[7];
+        var row = table[8].cells;
+        row[1].innerHTML = Jacob[6];
+        row[2].innerHTML = Jacob[7];
+        var row = table[9].cells;
+        row[1].innerHTML = Zach[6];
+        row[2].innerHTML = Zach[7];
+        var row = table[10].cells;
+        row[1].innerHTML = Michael[6];
+        row[2].innerHTML = Michael[7];
+        var row = table[11].cells;
+        row[1].innerHTML = Chase[6];
+        row[2].innerHTML = Chase[7];
+        var row = table[12].cells;
+        row[1].innerHTML = iDefenseTackles;
+        row[2].innerHTML = iDefenseInterception;
+      }
+
+    </script>
+
+  </body>
+</html>

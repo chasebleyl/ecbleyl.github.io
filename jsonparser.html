@@ -1,0 +1,97 @@
+<!--
+Author: E. Chase Bleyl & Daniel Jayo
+Last edited: 30 Oct 2015
+
+
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Array</title>
+    <!-- Logo for site -->
+    <link rel="icon" type="image/png" href="images/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="images/favicon-16x16.png" sizes="16x16" />
+  </head>
+  <body>
+    <a href="profile.html">RETURN TO ABOUT ME PAGE</a>
+    </br><div>
+      <h3>SAMPLE JSON: COPY TO CLIPBOARD AND PASTE BELOW</h3>
+      {"id":"54603","email":"hoard_teach@fake.com","firstname":"Pamela","lastname":"Anderson","display":"Pamela Anderson","teacher":true,"school":"","state":"","city":"","certified":"","bio":"","photo":"","grades":null,"subjects":null,"interests":null,"integratedId":6864,"districtGroup":"howard_test","districtId":7,"schoolAffiliations":[303],"permissionLevel":"teacher","systemPermissionLevel":false}
+    </div></br>
+    <form id="jsonParser" onsubmit="return submitParse()">
+      <textarea id="jsonImport" style="width:500px; height:300px;">Copy/Paste your JSON here</textarea>
+      <br/>
+      <input type="submit" value="Parse"/>
+      <input type="button" value="Clear" onclick="javascript:eraseText();">
+    </form>
+
+    <br/><textarea id="jsonExport" style="width:500px; height:300px;"></textarea><br/>
+
+    <script>
+
+      function eraseText() {
+        document.getElementById("jsonImport").value = "Copy/Paste your JSON here";
+        document.getElementById("jsonExport").value = "";
+      }
+
+      function submitParse() {
+        var thingToBeParsed = JSON.parse(document.getElementById("jsonImport").value);
+        //kick off recursion
+        thingToBeParsed = enumerator(thingToBeParsed); //modify object by reference
+		//print to screen
+        document.getElementById("jsonExport").value = JSON.stringify(thingToBeParsed);
+        //prevent default browser event for form submission
+        return false;
+      }
+
+      /*
+       * @param (mixed) item, can be an array, object or a scalar property value
+       * @param (object) object, object currently being worked on, reference needed to modify in place
+       * @param (mixed) property, can be an int or string: depending on enumerable item
+       */
+      function enumerator(item, objectReference, property) {
+        //if array, use only the first item
+        if (Array.isArray(item) && item.length > 0){
+          item = [item[0]];
+          if(property){
+            objectReference[property] = item; //make sure we reference current object when assigning a property, therefore modifying the object
+            enumerator(item[0], objectReference, property); //use the stack!
+          }else{
+            enumerator(item[0]); //use the stack!
+          }
+          //return final product,
+          //if the container for the whole JSON response is an array, this is the last line to be executed
+          return item;
+        }
+        if(item !== null && typeof item === "object"){
+          for(var x in item){
+            enumerator(item[x], item, x); //use the stack!
+          }
+          //if the container for the whole JSON response is an object, this is the last line to be executed
+          return item;
+        }
+        //because of the return statements above, we know we are working directly with the properties of objects
+        if (item === true || item === false) {
+          objectReference[property] = "bool";
+        } else if (!isNaN(item)) {
+          if (Array.isArray(objectReference[property])) {
+            objectReference[property] = ["int"];
+          } else {
+            objectReference[property] = "int";
+          }
+        } else {
+          if (Array.isArray(objectReference[property])) {
+            objectReference[property] = ["string"];
+          } else {
+            objectReference[property] = "string";
+          }
+        }
+      }
+    </script>
+  </body>
+</html>

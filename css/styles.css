@@ -1,0 +1,143 @@
+
+.body {
+  background-color: #2c3e50;
+  font-family:sans-serif;
+}
+
+.navbar {
+  margin-bottom: 0;
+  background-color: #ecf0f1;
+}
+
+.carousel {
+  margin-bottom: 0px;
+  background-color: #2c3e50;
+}
+
+#carousel-small > .item > img {
+  width: auto;
+  height:400px;
+}
+
+#carousel-large > .item > img {
+  width: auto;
+  height:800px;
+}
+
+.carousel-inner > .item >img {
+  width: auto;
+  height: 400px;
+}
+
+.multiple-items {
+  height: 400px;
+}
+
+.multiple-items > div > img {
+  height: 400px;
+  width: auto;
+}
+
+.carousel-white {
+  margin-bottom: 0;
+  background-color: #ecf0f1;
+}
+
+.carousel-control.left, .carousel-control.right {
+    background-image: none
+}
+
+.glyphicon {
+  font-size: 1.5em;
+}
+
+.navbar.center .navbar-inner {
+    text-align: center;
+    vertical-align: middle;
+}
+.navbar.center .navbar-inner .nav {
+    float: none;
+    display:inline-block;
+}
+
+.img {
+  width: auto;
+  vertical-align: middle;
+  image-orientation: from-image;
+}
+
+
+.img-fit > div > img{
+	height: 100%;
+  width: 100%;
+  image-orientation: from-image;
+}
+
+.glyphicon {
+  color: black;
+}
+
+#container-blue {
+  background-color: #2c3e50;
+  color: #ecf0f1;
+  text-align: center;
+  padding: 30px;
+}
+
+#container-white {
+  background-color: #ecf0f1;
+  color: black;
+  text-align: center;
+  padding: 30px;
+}
+
+#thumbnail-image {
+  margin: 10px auto;
+  display: block;
+  height: 200px;
+}
+
+#thumbnail-small {
+  margin: 10px auto;
+  display: inline-block;
+  height: 100px;
+}
+
+#thumbnail-large {
+  margin: 10px auto;
+  display: inline-block;
+  height: 400px;
+}
+
+#left-align-text {
+  text-align: left;
+}
+
+.ul > li {
+  text-align: left;
+}
+
+#img-rotate {
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+
+#img-negative-rotate {
+  -webkit-transform: rotate(270deg);
+  -moz-transform: rotate(270deg);
+  -ms-transform: rotate(270deg);
+  -o-transform: rotate(270deg);
+  transform: rotate(270deg);
+}
+
+#outer-carousel {
+  margin: 10px;
+}
+
+#resume-pdf {
+  height: 600px;
+  width: 80%;
+}
